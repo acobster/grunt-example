@@ -1,0 +1,17 @@
+@import "normalize.less";
+@import "colors.less";
+@import "base.less";
+
+.button {
+  color: @bg-color;
+  font-weight: bold;
+  background-color: @main-color;
+  padding: 0.2em 0.4em;
+  margin: 0.3em;
+  border-radius: 0.2em;
+
+  &:hover {
+    color: @main-color;
+    background-color: @hover-color;
+  }
+}
