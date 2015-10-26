@@ -29,9 +29,33 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      gruntfile: {
+        files: ['Gruntfile.js'],
+        tasks: ['jshint:gruntfile']
+      },
       less: {
         files: ['less/*.less'],
         tasks: ['less', 'cssmin']
+      },
+      js: {
+        files: ['lib/*.js', 'spec/*.js'],
+        tasks: ['jshint', 'jasmine']
+      }
+    },
+
+    jshint: {
+      gruntfile: ['Gruntfile.js'],
+      lib: ['lib/*.js'],
+      spec: ['spec/*.js']
+    },
+
+    jasmine: {
+      lib: {
+        src: 'lib/*.js',
+        options: {
+          specs: 'spec/*.spec.js',
+          vendor: ['vendor/jquery.js', 'vendor/jasmine-jquery.js']
+        }
       }
     },
 
@@ -42,6 +66,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-less' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+  grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+  grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
 
   // Default task.
   grunt.registerTask('default', ['less', 'cssmin', 'connect', 'watch']);
