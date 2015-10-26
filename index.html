@@ -4,7 +4,12 @@
 	<meta charset="utf-8">
 	<title>Grunt Example Project</title>
 	<link rel="stylesheet" href="/css/style.min.css">
-	<script src="/js/project.js"></script>
+	<script src="/js/project.min.js"></script>
+	<script>
+		jQuery(document).ready(function() {
+			jQuery('.repeat').repeater();
+		});
+	</script>
 </head>
 <body>
 	<h1>jQuery repeater plugin</h1>
@@ -12,14 +17,6 @@
 	<p>Click the <span class="button">+</span> below to add a repeater field</p>
 
 	<ul class="repeat">
-		<li class="repeater">
-			<div class="field-wrap">
-				<label>Repeatable field:</label>
-				<input name="field" type="text" placeholder="fill me in...">
-				<a href="#" class="button remove-repeater">-</a>
-				<a href="#" class="button add-repeater">+</a>
-			</div>
-		</li>
 		<li class="repeater">
 			<div class="field-wrap">
 				<label>Repeatable field:</label>

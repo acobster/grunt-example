@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['lib/*.js', 'spec/*.js'],
-        tasks: ['jshint', 'jasmine']
+        tasks: ['jshint', 'jasmine', 'concat', 'uglify']
       }
     },
 
@@ -59,6 +59,24 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      js: {
+        src: ['vendor/jquery.js', 'lib/Repeater.js', 'lib/repeater.jquery.js'],
+        dest: 'js/project.js'
+      }
+    },
+
+    uglify: {
+      options: {
+        mangle: false,
+      },
+      js: {
+        files: {
+          'js/project.min.js': ['js/project.js']
+        }
+      }
+    },
+
   });
 
   // Register Node plugins as Grunt tasks...
@@ -68,6 +86,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
   grunt.loadNpmTasks( 'grunt-contrib-jshint' );
   grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
+  grunt.loadNpmTasks( 'grunt-contrib-concat' );
+  grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
   // Default task.
   grunt.registerTask('default', ['less', 'cssmin', 'connect', 'watch']);
