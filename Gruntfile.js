@@ -1,12 +1,23 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-  // Your obligatory Hello World Grunt example.
-  grunt.task.registerTask('hello', function() {
-    grunt.log.writeln('Hello, World!');
-  });
+  // Configure Grunt tasks...
+  grunt.initConfig({
+		connect: {
+			server: {
+				options: {
+					port: 8080,
+					base: '.',
+					keepalive: true
+				}
+			}
+		},
+	});
+
+  // Register Node plugins as Grunt tasks...
+	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 
   // Default task.
-  grunt.registerTask('default', ['hello']);
+  grunt.registerTask('default', ['connect']);
 
 };

@@ -1,0 +1,15 @@
+body {
+	font-family: 'Helvetica', sans-serif;
+	color: #00ADEE;
+}
+
+a {
+	text-decoration: none;
+}
+
+.button {
+	color: #FFF;
+	font-weight: bold;
+	background-color: #00ADEE;
+	padding: 0.2em 0.4em;
+}
