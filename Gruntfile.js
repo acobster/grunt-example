@@ -54,14 +54,14 @@ module.exports = function(grunt) {
         src: 'lib/*.js',
         options: {
           specs: 'spec/*.spec.js',
-          vendor: ['vendor/jquery.js', 'vendor/jasmine-jquery.js']
+          vendor: ['bower_components/jquery/dist/jquery.js', 'bower_components/jasmine-jquery/lib/jasmine-jquery.js']
         }
       }
     },
 
     concat: {
       js: {
-        src: ['vendor/jquery.js', 'lib/Repeater.js', 'lib/repeater.jquery.js'],
+        src: ['bower_components/jquery/dist/jquery.js', 'lib/Repeater.js', 'lib/repeater.jquery.js'],
         dest: 'js/project.js'
       }
     },
@@ -77,6 +77,15 @@ module.exports = function(grunt) {
       }
     },
 
+    bower: {
+      install: {
+        options: {
+          install: true,
+          copy: false
+        }
+      }
+    },
+
   });
 
   // Register Node plugins as Grunt tasks...
@@ -88,8 +97,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+  grunt.loadNpmTasks( 'grunt-bower-installer' );
 
   // Default task.
-  grunt.registerTask('default', ['less', 'cssmin', 'connect', 'watch']);
+  grunt.registerTask('default', ['bower', 'less', 'cssmin', 'connect', 'watch']);
 
 };

@@ -1,0 +1,24 @@
+{
+  "name": "grunt-example",
+  "version": "1.0.0",
+  "authors": [
+    "Coby Tamayo <acobster@gmail.com>"
+  ],
+  "description": "An example project managed with Grunt",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine-jquery": "~2.1.1",
+    "jquery": "1.11.3"
+  },
+  "resolutions": {
+    "jquery": "1.11.3"
+  }
+}
