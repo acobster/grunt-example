@@ -39,7 +39,11 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['lib/*.js', 'spec/*.js'],
-        tasks: ['jshint', 'jasmine', 'concat', 'uglify']
+        tasks: ['jshint', 'jasmine', 'concat', 'uglify', 'jsdoc']
+      },
+      doc: {
+        files: ['example-readme.md'],
+        tasks: ['jsdoc']
       }
     },
 
@@ -86,6 +90,13 @@ module.exports = function(grunt) {
       }
     },
 
+    jsdoc: {
+      lib: {
+        src: ['lib/*.js', 'example-readme.md'],
+        dest: 'doc'
+      }
+    }
+
   });
 
   // Register Node plugins as Grunt tasks...
@@ -98,8 +109,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   grunt.loadNpmTasks( 'grunt-bower-installer' );
+  grunt.loadNpmTasks( 'grunt-jsdoc' );
 
   // Default task.
-  grunt.registerTask('default', ['bower', 'less', 'cssmin', 'connect', 'watch']);
+  grunt.registerTask('default', ['bower', 'less', 'cssmin', 'jsdoc', 'connect', 'watch']);
 
 };
